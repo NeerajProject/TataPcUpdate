@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_res_contractors","access.res_contractors","model_res_contractors",,1,1,1,1
+"access_tata_meeting","access.tata_meeting","model_tata_meeting",,1,1,1,1
+"access_res_firm","access.res_firm","model_res_firm",,1,1,1,1
+

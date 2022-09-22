@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<record id="group_contractor_lead" model="res.groups">
+            <field name="name">Admin Permission to enter Contractors Lead</field>
+        </record>
+
+        <record id="user_contractor_lead" model="res.users">
+            <field name="name">Contractor</field>
+            <field name="login">contractor</field>
+
+        </record>
+
+        <record id="team_contractor_lead" model="crm.team">
+            <field name="name">Contractor</field>
+
+                        <field name="member_ids" eval="[(6, 0, [ref('tata_contractors_custom.user_contractor_lead')])]"/>
+
+        </record>
+
+
+
+
+
+
+
+    </data>
+</odoo>
