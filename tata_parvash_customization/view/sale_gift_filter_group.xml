@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="view_sale_gift_search" model="ir.ui.view">
+            <field name="name">sale.gift.search</field>
+            <field name="model">sale.gift</field>
+            <field eval="3" name="priority"/>
+            <field name="arch" type="xml">
+                <search string="Gift">
+                    <field name="sale_order_name"/>
+                    <field name="partner_id"/>
+<!--                    <field name="product_id"/>-->
+<!--                    <field name="name" string="Location" filter_domain="['|',('location_id', 'ilike', self),('location_dest_id', 'ilike', self)]"/>-->
+<!--                    <field name="partner_id" string="Partner" filter_domain="[('picking_id.partner_id', 'child_of', self)]"/>-->
+                    <filter string="Closed" name="ready" domain="[('state','=','sent')]"/>
+                    <filter string="Open" name="ready" domain="[('state','=','draft')]"/>
+                    <separator/>
+                    <filter  string="Overdue Gift" name="overdue_opp" domain="[('housewarming_date', '=', False), ('housewarming_date', '&lt;', context_today().strftime('%Y-%m-%d')),('state','=','draft')]"/>
+                    <separator/>
+                    <filter string="Housewarming  Date" name="housewarming_date" date="housewarming_date"/>
+                    <filter string="Distribution  Date" name="gift_date" date="gift_date"/>
+<!--                    <filter string="Closed Date" name="close_date" date="date_closed"/-->
+
+
+
+
+
+
+
+
+
+<!--                    <filter string="Delayed Gift" name="ready" domain="[('state','=','draft'),('housewarming_date','&lt;',date_of_today]"/>-->
+<!--                    <filter string="To Do" name="future" domain="[('state','in',('assigned','confirmed','waiting'))]" help="Stock moves that are Confirmed, Available or Waiting"/>-->
+<!--                    <filter string="Done" name="done" domain="[('state','=','done')]" help="Stock moves that have been processed"/>-->
+<!--                    <separator/>-->
+<!--                    <filter string="Incoming" name="incoming" domain="[('location_id.usage', 'not in', ('internal', 'transit')), ('location_dest_id.usage', 'in', ('internal', 'transit'))]"/>-->
+<!--                    <filter string="Outgoing" name="outgoing" domain="[('location_id.usage', 'in', ('internal', 'transit')), ('location_dest_id.usage', 'not in', ('internal', 'transit'))]"/>-->
+<!--                    <filter string="Inventory" name="inventory" domain="[('is_inventory', '=', True)]"/>-->
+                    <separator/>
+<!--                    <filter string="Date" name="today" date="date" help="Scheduled or processing date"/>-->
+                    <group expand="0" string="Group By">
+                        <filter string="Customer" name="partner_id" domain="[]"  context="{'group_by': 'partner_id'}"/>
+                        <filter string="State" name="state" domain="[]"  context="{'group_by': 'state'}"/>
+    </group>
+                </search>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

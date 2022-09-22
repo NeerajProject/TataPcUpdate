@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+        <record id="tata_meeting_tree_view" model="ir.ui.view">
+            <field name="name">tata.meeting.tree.view</field>
+            <field name="model">tata.meeting</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"></field>
+                    <field name="date"></field>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="tata_meeting_form_view" model="ir.ui.view">
+            <field name="name">tata.meeting.form.view</field>
+            <field name="model">tata.meeting</field>
+            <field name="arch" type="xml">
+                <form>
+                      <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+              <group>
+                  <group>
+                                        <field name="date"></field>
+
+                  </group>
+              </group>
+                    <group>
+<!--                        <field name="contract_ids">-->
+
+<!--                        </field>-->
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+
+
+
+        <record id="tata_meeting_act_window" model="ir.actions.act_window">
+            <field name="name">Meet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tata.meeting</field>
+<!--            <field name="view_type">form</field>-->
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+
+        <record id="tata_meeting_form_view" model="ir.ui.view">
+            <field name="name">tata.meeting.form.view</field>
+            <field name="model">tata.meeting</field>
+            <field name="arch" type="xml">
+                <form>
+                                        <sheet>
+
+                      <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+              <group>
+                  <group>
+                                        <field name="date"></field>
+
+                  </group>
+              </group>
+
+                    <notebook>
+                        <page string="Contractors">
+                            <field name="contract_ids">
+<!--                                <field name="name"></field>-->
+<!--                                <field name="mobile"></field>-->
+                            </field>
+                        </page>
+                    </notebook>
+                                        </sheet>
+                </form>
+
+            </field>
+        </record>
+
+
+
+
+        <record id="tata_meeting_act_window" model="ir.actions.act_window">
+            <field name="name">Meet</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tata.meeting</field>
+<!--            <field name="view_type">form</field>-->
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+        <menuitem name="Meet" id="tata_meet_crm_lead" parent="crm.crm_menu_config" action="tata_meeting_act_window"/>
+        <menuitem name="Meet" id="tata_meets_crm_lead" parent="tata_meet_crm_lead" action="tata_meeting_act_window"/>
+
+
+<!--        &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
+
+
+                <record id="'res_contractors_tree_view" model="ir.ui.view">
+            <field name="name">res.contractors.tree.view</field>
+            <field name="model">res.contractors</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"></field>
+                    <field name="firm_id"></field>
+                    <field name="place_id"></field>
+                    <field name="mobile"></field>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="res_contractors_form_view" model="ir.ui.view">
+            <field name="name">res.contractors.form.view</field>
+            <field name="model">res.contractors</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+
+                      <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+              <group>
+                  <group>
+                      <field name="firm_id"></field>
+                      <field name="place_id"></field>
+                      <field name="mobile"></field>
+
+                  </group>
+              </group>
+                    <group>
+<!--                        <field name="contract_ids">-->
+
+<!--                        </field>-->
+                    </group>
+                 </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+
+
+        <record id="res_contractors_act_window" model="ir.actions.act_window">
+            <field name="name">Contractors</field>
+            <field name="res_model">res.contractors</field>
+<!--            <field name="view_type">form</field>-->
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+
+
+                <menuitem name="Contractors" id="contractors_crm_lead" parent="crm.crm_menu_sales" action="res_contractors_act_window"/>
+
+
+
+
+
+
+    </data>
+</odoo>

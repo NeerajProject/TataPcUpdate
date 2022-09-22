@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_partnert_tata_parvash_form" model="ir.ui.view">
+            <field name="name">res.partner.property.form.inherit</field>
+            <field name="model">res.partner</field>
+
+            <field name="inherit_id" ref="base.view_partner_form"/>
+
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='country_id']" position="after">
+                                        <field name="territory_id" placeholder="Territory" ></field>
+                </xpath>
+
+                      <xpath expr="//field[@name='vat']" position="after">
+                                        <field name="agent_type" placeholder="Territory" ></field>
+                                        <field name="parent_partner" placeholder="Parent Partner" ></field>
+                </xpath>
+            </field>
+        </record>
+
+         <record id="crm_tata_view_form" model="ir.ui.view">
+        <field name="name">crm.lead.view.form.inherit.tata.crm</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="territory_id"></field>
+            </xpath>
+               <xpath expr="//field[@name='date_deadline']" position="after">
+                    <field name="house_warming_date"></field>
+            </xpath>
+
+
+
+
+            <xpath expr="//notebook/page[@name='internal_notes']" position="before">
+                <page name="product_list" string="Product List">
+                <field name="product_ids">
+                    <tree editable="bottom">
+                        <field name="product_id"></field>
+                        <field name="booking_id"></field>
+                        <field name="date_of_booking" string="Booking Date"></field>
+                        <field name="product_uom_qty"></field>
+                        <field name="unit_id" string="Units"></field>
+                    </tree>
+                </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+ <record id="view_category_property_form" model="ir.ui.view">
+            <field name="name">product.category.property.form.inherit</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+                <group name="first" position="after">
+                    <field name="active" invisible="1"></field>
+                </group>
+            </field>
+ </record>
+
+
+<record id="sale_order_view_form" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.event.sale</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+
+<!--            <field name="date_order" position="after">-->
+<!--                <field name="inauguration_date"></field>-->
+<!--</field>-->
+ <xpath expr="//div[@name='button_box']/button[@name='preview_sale_order']" position="before">
+                <button class="oe_stat_button" icon="fa-gift"  name="action_view_gift" type="object"
+                         attrs="{'invisible': [('state','!=','sale')]}"
+
+                >
+                    <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Gift</span>
+                                <span class="o_stat_text">
+                                    <span class="badge badge-pill badge-success"   attrs="{'invisible': [('state_gift','=','draft')]}">
+                                        Done
+                                    </span>
+                                    <span class="badge badge-pill badge-warning"   attrs="{'invisible': [('state_gift','=','sent')]}">
+                                        Draft
+                                    </span>
+                                    <field name="state_gift" invisible="1"></field>
+<!--                                    <field name="state_gift" class="badge badge-success"></field>-->
+
+                                </span>
+                            </div>
+                </button>
+
+
+
+
+            </xpath>
+
+        </field>
+          </record>
+
+
+
+
+
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,7 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_res_territory","access.res_territory","model_res_territory",,1,1,1,1
+"access_product_line_crm","access.product_line_crm","model_product_line_crm",,1,1,1,1
+"access_res_project_type","access.res_project_type","model_res_project_type",,1,1,1,1
+"access_sale_gift","access.sale_gift","model_sale_gift",,1,1,1,1
+"access_res_res_place","access.res_place","model_res_place",,1,1,1,1
+

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sale_gift_form_view" model="ir.ui.view">
+            <field name="name">sale_gift_form</field>
+            <field name="model">sale.gift</field>
+            <field name="arch" type="xml">
+                <form string="ModelTitle"   create="false">
+                    <header>
+                        <button name="action_done" class="btn btn-primary o_form_button_edit" states="draft" type="object" string="Done"></button>
+                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,sent"/>
+
+                    </header>
+                    <sheet>
+
+
+                         <div class="oe_title">
+                        <h1>
+                            <field name="sale_order" readonly="1" modifiers="{&quot;readonly&quot;: true, &quot;required&quot;: true}"/>
+                        </h1>
+                    </div>
+
+                        <group>
+                            <group>
+
+                                    <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}" options="{&quot;always_reload&quot;: True}"/>
+
+<!--    <field name="state"></field>-->
+
+                            </group>
+                            <group>
+                                <field name="order_date"></field>
+                    <field name="gift_date"  attrs="{'readonly':[('state', '==', 'sent')]}" ></field>
+<!--                    <field name="inauguration_date"></field>-->
+                            </group>
+
+                        </group>
+                        <notebook>
+                            <page   string="Gift Description">
+                                <field name="note"></field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sale_gift_tree_view" model="ir.ui.view">
+            <field name="name">sale_gift_tree</field>
+            <field name="model">sale.gift</field>
+            <field name="arch" type="xml">
+                <tree
+                        decoration-warning="date_of_today == housewarming_date and state == 'draft'"
+                        decoration-success="state == 'sent'"
+                        decoration-danger ="(date_of_today &gt; housewarming_date) and (state == 'draft')"
+                        decoration-muted  ="(date_of_today &lt; housewarming_date) and (state == 'draft')"
+                create="false" edit="false"
+                >
+                    <field name="sale_order"></field>
+                    <field name="order_date"></field>
+<!--                    <field name="inauguration_date"></field>-->
+                    <field name="housewarming_date"></field>
+
+                    <field name="gift_date"></field>
+                    <field name="date_of_today" invisible="1"></field>
+                    <field name="state"></field>
+
+                </tree>
+            </field>
+        </record>
+
+ <record id="sale_gift_kanban_view" model="ir.ui.view">
+        <field name="name">sale.gift.kanban</field>
+        <field name="model">sale.gift</field>
+        <field name="arch" type="xml">
+            <kanban sample="1">
+                <field name="id"/>
+                <field name="sale_order"/>
+                <field name="color"/>
+                <field name="note"/>
+<!--                <field name="currency_id"/>-->
+<!--                <field name="activity_state"/>-->
+                <progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>
+                <templates>
+                    <t t-name="kanban-box">
+
+                                               <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record ">
+
+<div class="container">
+<div class="row">
+    <div class="col">
+ <div class="card-body">
+
+
+
+
+
+    <h5 class="card-title"><field name="sale_order"></field> </h5>
+     <h6 class="card-subtitle mb-2 text-muted">
+
+         <div class="badge badge-success" attrs="{'invisible': [('state','==','draft')]}">
+
+                     <field name='state' ></field>
+         </div>
+         <div class="badge badge-danger"  attrs="{'invisible': [('state','==','sent')]}">
+             <field name="state"></field>
+         </div>
+</h6>
+
+ </div>
+    </div>
+    <div class="col">
+          <figure class="figure">
+  <figcaption class="figure-caption"><field name="partner_id"></field> </figcaption>
+</figure>
+
+        <br></br>
+        <div class="text-warning" attrs="{'invisible': [('color','!=','present')]}">
+                    <span class="fa fa-home" ></span> <field name="housewarming_date"></field>
+
+
+        </div>
+        <div  class="text-info" attrs="{'invisible': [('color','!=','before')]}">
+                    <span class="fa fa-home" ></span> <field name="housewarming_date"></field>
+
+        </div>
+
+         <div class="text-danger" attrs="{'invisible': [('color','!=','after')]}">
+                    <span class="fa fa-home" ></span> <field name="housewarming_date"></field>
+
+        </div>
+
+         <div   attrs="{'invisible': [('state','!=','sent')]}">
+        <span class="fa fa-gift"></span>
+<field name="gift_date"></field>
+         </div>
+    </div>
+
+</div>
+</div>
+
+
+
+                                               </div>
+
+
+
+
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+
+
+
+         <record id="sale_gift_view_pivot" model="ir.ui.view">
+            <field name="name">sale.gift.view.pivot</field>
+            <field name="model">sale.gift</field>
+            <field name="arch" type="xml">
+                <pivot string="Gift" >
+                    <field name="state" type="col"/>
+                    <field name="partner_id" type="row"/>
+                    <field name="housewarming_date" type="row"/>
+
+                </pivot>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+        <record id="sale_gift_act_window" model="ir.actions.act_window">
+            <field name="name">Gift</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.gift</field>
+            <field name="view_mode">tree,form,kanban,pivot</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Gift.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Gift" id="sale_gift_menu" parent="sale.sale_order_menu" action="sale_gift_act_window"/>
+
+    </data>
+</odoo>

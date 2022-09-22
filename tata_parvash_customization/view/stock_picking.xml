@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+    <record id="view_picking_form_inherit_mrp" model="ir.ui.view">
+        <field name="name">view.picking.form.inherit.mrp</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+
+             <xpath expr="//div[@name='button_box']/button[@name='action_picking_move_tree']" position="before">
+                 <button class="oe_stat_button"  name='action_done_gift' type='object' icon="fa-gift" >
+                    <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Gift</span>
+                                <span class="o_stat_text">
+
+<!--                                    <span class="badge badge-pill badge-success"   attrs="{'invisible': [('state_gift','=','draft')]}">-->
+<!--                                        Done-->
+<!--                                    </span>-->
+<!--                                    <span class="badge badge-pill badge-warning"   attrs="{'invisible': [('state_gift','=','sent')]}">-->
+<!--                                        Draft-->
+<!--                                    </span>-->
+<!--                                    <field name="state_gift" invisible="1"></field>-->
+
+
+                                </span>
+                            </div>
+                </button>
+
+             </xpath>
+        </field>
+    </record>
+
+    </data>
+</odoo>
