@@ -64,7 +64,19 @@
             <field name="model">tata.meeting</field>
             <field name="arch" type="xml">
                 <form>
+
                                         <sheet>
+  <div class="oe_button_box" name="button_box">
+
+
+
+
+      <button  class="btn oe_stat_button o_res_partner_tip_opp" name="action_view_opportunity"  type="object"><i class="fa fa-fw o_button_icon fa-star"></i><div name="opportunity_count" class="o_field_widget o_stat_info o_readonly_modifier" data-original-title="" title="">
+    <span class="o_stat_value"> <field name="leads_count"></field> </span>
+    <span class="o_stat_text">Opportunities</span>
+</div></button>
+
+                        </div>
 
                       <div class="oe_title">
                         <h1>
@@ -136,7 +148,21 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+  <div class="oe_button_box" name="button_box">
 
+      <button  class="btn oe_stat_button o_res_partner_tip_opp" name="action_view_opportunity"  type="object"><i class="fa fa-fw o_button_icon fa-star"></i><div name="opportunity_count" class="o_field_widget o_stat_info o_readonly_modifier" data-original-title="" title="">
+    <span class="o_stat_value"> <field name="leads_count"></field> </span>
+    <span class="o_stat_text">Opportunities</span>
+</div></button>
+
+
+
+      <button  class="btn oe_stat_button o_res_partner_tip_opp" name="action_view_meet_attended"  type="object"><i class="fa fa-fw o_button_icon fa-calendar"></i><div name="opportunity_count" class="o_field_widget o_stat_info o_readonly_modifier" data-original-title="" title="">
+    <span class="o_stat_value"> <field name="meet_count"></field> </span>
+    <span class="o_stat_text">Meets Attended</span>
+</div></button>
+
+  </div>
                       <div class="oe_title">
                         <h1>
                             <field name="name" />
