@@ -167,7 +167,10 @@
     </record>
 
 
+    <record id="sale_crm.sale_order_menu_quotations_crm" model="ir.ui.menu">
 
+        <field name="groups_id" eval="[(4, ref('custom_executive_crm_tata.group_tata_admin_all_leads'))]"/>
+    </record>
 
 
 
