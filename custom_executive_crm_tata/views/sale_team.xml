@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+  <record model="ir.actions.act_window" id="tata_dealers_crm_lead_action_pipeline">
+            <field name="name">Pipeline ss</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">kanban,tree,graph,pivot,form,calendar,activity</field>
+            <field name="domain">[('type','=','opportunity'),('user_id','=',uid)]</field>
+            <field name="context">{
+                    'default_type': 'opportunity',
+                    'search_default_assigned_to_me': 1
+            }</field>
+            <field name="search_view_id" ref="crm.view_crm_case_opportunities_filter"/>
+        </record>
+
+
+    <record id="tata_dealers_crm_team_action_pipeline" model="ir.actions.act_window">
+        <field name="name">Teams ss</field>
+        <field name="res_model">crm.team</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('user_id','=',uid)]</field>
+
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define a new sales team
+            </p><p>
+                Use Sales Teams to organize your sales departments.
+                Each team will work with a separate pipeline.
+            </p>
+        </field>
+    </record>
+
+<!--        ............... menus ..............-->
+
+        <menuitem id="tata_crm_dealers_individual"
+                  name="My Pipeline"
+                  parent="crm.crm_menu_sales"
+                  groups="group_tata_dealer_salesman"
+                  sequence="1"
+                  action="tata_dealers_crm_lead_action_pipeline"></menuitem>
+
+        <menuitem id="tata_crm_team_dealers_individual"
+                  name="Team"
+                  parent="crm.crm_menu_sales"
+                  sequence="4"
+                  groups="group_tata_dealer_salesman"
+                  action="tata_dealers_crm_team_action_pipeline"></menuitem>
+
+
+
+
+
+
+
+
+
+    </data>
+</odoo>
