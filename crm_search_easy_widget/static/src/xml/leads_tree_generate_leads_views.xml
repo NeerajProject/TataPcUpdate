@@ -8,19 +8,19 @@
 
       <div class="col">
           <label name="from"><strong> From </strong></label>
-                <input style="size:25px;background-color: transparent;height:32px;border-bottom: 1px solid black;border-top: 0px;border-left: 0px;border-right: 0px; width: 120px" type="date"></input>
+                <input style="size:25px;background-color: transparent;height:32px;border-bottom: 1px solid black;border-top: 0px;border-left: 0px;border-right: 0px; width: 120px" class="tata_from_date_crm_123" type="date"></input>
 
       </div>
        <div class="col">
                 <label name="to"> <strong> To </strong></label>
-                <input style="size:25px;background-color: transparent;height:32px;border-bottom: 1px solid black;border-top: 0px;border-left: 0px;border-right: 0px; width: 120px" type="date"></input>
+                <input class="tata_to_date_crm_123" style="size:25px;background-color: transparent;height:32px;border-bottom: 1px solid black;border-top: 0px;border-left: 0px;border-right: 0px; width: 120px" type="date"></input>
 
       </div>
 
       <div class="col">
                 <label name="Search"> </label>
           <br></br>
-                    <button type="button" class="btn btn-light o_dashboard_action"  t-on-click="search_based_on_date"><i class="fa fa-search" style="size:25px !important;"></i></button>
+                    <button type="button" class="btn btn-light o_dashboard_action"  context='{"search_default_draft_rfqs": true}' t-on-click="search_based_on_date"><i class="fa fa-search" style="size:25px !important;"></i></button>
       </div>
 
       <br></br>
