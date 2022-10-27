@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+
+    <t t-name="crm_search_easy_widget.search_easy_widget" owl="1">
+
+<nav class="navbar navbar-light bg-light " style="padding:10px">
+  <form class="row">
+
+      <div class="col">
+          <label name="from"><strong> From </strong></label>
+                <input class="form-control mr-sm-2" type="date"></input>
+
+      </div>
+       <div class="col">
+                <label name="to"> <strong> To </strong></label>
+                <input class="form-control mr-sm-2" type="date"></input>
+
+      </div>
+
+      <div class="col">
+                <label name="Search"> </label>
+          <br></br>
+                    <button type="button" class="btn btn-light"><i class="fa fa-search"></i></button>
+      </div>
+
+      <br></br>
+      <div class="col">
+                <label name="Search">  </label>
+          <br></br>
+                    <button type="button" class="btn btn-light"><i class="fa fa-download"></i></button>
+      </div>
+
+
+        <div class="col">
+                <label name="Search"></label>
+          <br></br>
+                    <button type="button" class="btn btn-light"><i class="fa fa-bar-chart"></i></button>
+      </div>
+  </form>
+</nav>
+
+
+
+
+
+
+
+    </t>
+
+    <t t-inherit="web.Legacy.ControlPanel" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_control_panel')]" position="inside">
+            <br></br>
+            <t t-call="crm_search_easy_widget.search_easy_widget"></t>
+
+        </xpath>
+    </t>
+
+
+</templates>
