@@ -3,38 +3,38 @@
 
     <t t-name="crm_search_easy_widget.search_easy_widget" owl="1">
 
-<nav class="navbar navbar-light bg-light " style="padding:10px">
+<nav class="navbar navbar-light bg-light " style="padding:12px">
   <form class="row">
 
       <div class="col">
           <label name="from"><strong> From </strong></label>
-                <input class="form-control mr-sm-2" type="date"></input>
+                <input style="size:25px;background-color: transparent;height:32px;border-bottom: 1px solid black;border-top: 0px;border-left: 0px;border-right: 0px; width: 120px" type="date"></input>
 
       </div>
        <div class="col">
                 <label name="to"> <strong> To </strong></label>
-                <input class="form-control mr-sm-2" type="date"></input>
+                <input style="size:25px;background-color: transparent;height:32px;border-bottom: 1px solid black;border-top: 0px;border-left: 0px;border-right: 0px; width: 120px" type="date"></input>
 
       </div>
 
       <div class="col">
                 <label name="Search"> </label>
           <br></br>
-                    <button type="button" class="btn btn-light"><i class="fa fa-search"></i></button>
+                    <button type="button" class="btn btn-light o_dashboard_action"  t-on-click="search_based_on_date"><i class="fa fa-search" style="size:25px !important;"></i></button>
       </div>
 
       <br></br>
       <div class="col">
                 <label name="Search">  </label>
           <br></br>
-                    <button type="button" class="btn btn-light"><i class="fa fa-download"></i></button>
+                    <button type="button" class="btn btn-light o_dashboard_action" t-on-click="download_databased_xlsx_report"><i class="fa fa-download"></i></button>
       </div>
 
 
         <div class="col">
                 <label name="Search"></label>
           <br></br>
-                    <button type="button" class="btn btn-light"><i class="fa fa-bar-chart"></i></button>
+                    <button type="button" class="btn btn-light o_dashboard_action" t-on-click="download_summary_xlsx_report"><i class="fa fa-bar-chart"></i></button>
       </div>
   </form>
 </nav>
