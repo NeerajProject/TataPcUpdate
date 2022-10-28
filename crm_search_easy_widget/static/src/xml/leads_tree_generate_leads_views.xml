@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates>
 
+
+
+
+
+
     <t t-name="crm_search_easy_widget.search_easy_widget" owl="1">
 
 <nav class="navbar navbar-light bg-light " style="padding:12px">
+      <span class="navbar-brand" href="#">CRM </span>
+
   <form class="row">
 
       <div class="col">
@@ -36,6 +43,7 @@
           <br></br>
                     <button type="button" class="btn btn-light o_dashboard_action" t-on-click="download_summary_xlsx_report"><i class="fa fa-bar-chart"></i></button>
       </div>
+
   </form>
 </nav>
 

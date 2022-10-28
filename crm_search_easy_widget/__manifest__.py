@@ -7,7 +7,7 @@
     'category': 'Sales/CRM',
     'version': '1.2',
     'depends': [
-
+'xlsx_extract_tata'
     ],
     'data': [
 
