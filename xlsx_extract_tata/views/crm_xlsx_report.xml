@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="crm_lead_xlsx_form_view" model="ir.ui.view">
+            <field name="name">crm.xlsx.report.form</field>
+            <field name="model">crm.xlsx.report</field>
+            <field name="arch" type="xml">
+                <form string="ModelTitle">
+                    <sheet>
+                         <group>
+    <field name="date_from"></field>
+    <field name="date_to"></field>
+                    <footer>
+
+                             <button  string="Download XLSX" type="object" class="oe_highlight" name="action_all_download"></button>
+                             <button  string="Dowlnoad XLSX[Date Based]" class="oe_highlight" type="object" name="action_xlsx_from_to"></button>
+                    </footer>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+        <record id="xlsx_report_sale_act_window" model="ir.actions.act_window">
+            <field name="name">CRM XLSX Report</field>
+                        <field name="type">ir.actions.act_window</field>
+
+            <field name="res_model">crm.xlsx.report</field>
+            <field name="view_mode">form</field>
+                        <field name="target">new</field>
+
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Lead Summary" id="xlsx_report_sale_menu" parent="crm.crm_menu_report"  action="xlsx_report_sale_act_window"/>
+
+    </data>
+</odoo>

@@ -7,10 +7,11 @@
     'category': 'Sales/CRM',
     'version': '1.2',
     'depends': [
-'xlsx_extract_tata'
+'report_xlsx','base'
     ],
     'data': [
 
+'report/crm_xlsx_from_to.xml'
     ],
     'auto_install': True,
     'assets': {

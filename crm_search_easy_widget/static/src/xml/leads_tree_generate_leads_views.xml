@@ -8,8 +8,7 @@
 
     <t t-name="crm_search_easy_widget.search_easy_widget" owl="1">
 
-<nav class="navbar navbar-light bg-light " style="padding:12px">
-      <span class="navbar-brand" href="#">CRM </span>
+<nav class="navbar navbar-light bg-light " style="padding:12px" id="tata_hide_menu_when_crm">
 
   <form class="row">
 
@@ -24,6 +23,17 @@
 
       </div>
 
+
+
+
+
+
+
+
+
+
+
+
       <div class="col">
                 <label name="Search"> </label>
           <br></br>
@@ -31,19 +41,27 @@
       </div>
 
       <br></br>
+
+
+
       <div class="col">
-                <label name="Search">  </label>
+             <button type="button" class="btn btn-light o_dashboard_action" t-on-click="tata_my_pipe_line">
+       <label name="Search"> </label>
           <br></br>
-                    <button type="button" class="btn btn-light o_dashboard_action" t-on-click="download_databased_xlsx_report"><i class="fa fa-download"></i></button>
+                        <i class="fa fa-list"></i>
+
+
+                    </button>
+
+      <br></br>
+
+
+
+
+
+
+
       </div>
-
-
-        <div class="col">
-                <label name="Search"></label>
-          <br></br>
-                    <button type="button" class="btn btn-light o_dashboard_action" t-on-click="download_summary_xlsx_report"><i class="fa fa-bar-chart"></i></button>
-      </div>
-
   </form>
 </nav>
 
@@ -58,7 +76,18 @@
     <t t-inherit="web.Legacy.ControlPanel" t-inherit-mode="extension" owl="1">
         <xpath expr="//div[hasclass('o_control_panel')]" position="inside">
             <br></br>
-            <t t-call="crm_search_easy_widget.search_easy_widget"></t>
+            <t t-if="props.view.model == 'crm.lead'">
+                <t t-if="props.view.type != 'form'">
+                                    <t t-call="crm_search_easy_widget.search_easy_widget"></t>
+
+
+
+                </t>
+
+
+
+
+</t>
 
         </xpath>
     </t>

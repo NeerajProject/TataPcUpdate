@@ -10,10 +10,14 @@ odoo.define('crm_search_easy_widget.search_easy_widget', function (require) {
 
         setup() {
             this._super(...arguments);
-        },
+       },
+
 
         search_based_on_date(e)
         {
+
+
+
         console.log(e)
         e.preventDefault();
         var from_date = $('.tata_from_date_crm_123').val()
@@ -36,6 +40,8 @@ odoo.define('crm_search_easy_widget.search_easy_widget', function (require) {
                   }
 
         }
+
+
         console.log(action)
    return new Promise(resolve => {
                 this.env.bus.trigger('do-action', {
@@ -60,26 +66,42 @@ odoo.define('crm_search_easy_widget.search_easy_widget', function (require) {
 
                },
 
-        download_databased_xlsx_report()
-        {
-        alert("download_databased_xlsx_report")
-          var from_date = $('.tata_from_date_crm_123').val()
-        var to_date = $('.tata_to_date_crm_123').val()
-        var rpc = require('web.rpc');
-
-          rpc.query({
-                model: 'crm.xlsx.report',
-                method: 'call_date_based_filters',
-                args: [[],from_date,to_date],
-            })
 
 
+               tata_my_pipe_line(){
+//
+                   var action= {
+            name : 'Pipeline ',
+            type: 'ir.actions.act_window',
+            res_model: 'crm.lead',
+            views: [[false, "kanban"],[false, "list"],[false,"graph"],[false,"pivot"],[false,"form"],[false,'calendar'],[false,'activity']],
+            target: 'current',
+            domain: [['type','=','opportunity']],
+            context:{                    'default_type': 'opportunity',
+                               'search_default_assigned_to_me': 1            }
 
-        },
-        download_summary_xlsx_report()
-        {
-        alert('download_summary_xlsx_report')
+
+
         }
+//
+//
+   return new Promise(resolve => {
+                this.env.bus.trigger('do-action', {
+                    action,
+                    options: {
+                        on_close: () => {
+                            resolve();
+                            this.fetchAndUpdate();
+                        },
+                    },
+                });
+            });
+
+
+
+               },
+
+
     });
 
     patch(ControlPanel, 'crm_search_easy_widget.search_easy_widget', {
