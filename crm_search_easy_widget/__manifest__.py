@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Lead test',
+    'name': 'CRM Search Easy ',
     'summary': 'Generate Leads/Opportunities based on country, industries, size, etc.',
     'category': 'Sales/CRM',
     'version': '1.2',
