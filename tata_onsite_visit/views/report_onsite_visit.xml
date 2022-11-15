@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="tata_visit_tracker_search_view" model="ir.ui.view">
+            <field name="name">tata_visit_tracker_search</field>
+            <field name="model">tata.visit.tracker</field>
+            <field name="arch" type="xml">
+                <search string="ModelTitle">
+                    <field name="lead_id"></field>
+                    <field name="user_id"></field>
+                    <field name="partner_id"></field>
+                    <field name="planned_lead"></field>
+                    <field name="status"></field>
+                    <group expand="1" string="Group By">
+                        <filter string="Lead " name="lead_id" domain="[]"
+                                context="{'group_by':'lead_id'}"/>
+                              <filter string="Users  " name="user_id" domain="[]"
+                                context="{'group_by':'user_id'}"/>
+                                   <filter string="Customer  " name="user_id" domain="[]"
+                                context="{'group_by':'partner_id'}"/>
+
+
+                           <filter string="Planned Date  " name="planned_lead" domain="[]"
+                                context="{'group_by':'planned_lead'}"/>
+                           <filter string="Status  " name="status" domain="[]"
+                                context="{'group_by':'status'}"/>
+                <filter string="Pending Status  " name="status" domain="[]"
+                                context="{'group_by':'status_time'}"/>
+
+                    <separator/>
+
+                        <filter string="My Visit" name="user_id" domain="[('user_id', '=', uid)]" />
+                                            <separator/>
+
+                        <filter string="Draft" name="status_draft" domain="[('status', '=', 'draft')]" />
+                        <filter string="Check In" name="status_checkin" domain="[('status', '=', 'checkin')]" />
+                        <filter string="Check Out" name="status_checkout" domain="[('status', '=', 'checkout')]" />
+                        <filter string="Cancel" name="status_cancel" domain="[('status', '=', 'cancel')]" />
+
+                                            <separator/>
+
+                        <filter string="Today" name="status_draft" domain="[('status_time', '=', 'Today')]" />
+                        <filter string="Completed" name="status_checkin" domain="[('status_time', '=', 'Completed')]" />
+                        <filter string="Upcoming" name="status_checkout" domain="[('status_time', '=', 'Upcoming')]" />
+
+
+
+
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+
+        <record id="tata_visit_tracker_report_tree_act_window" model="ir.actions.act_window">
+            <field name="name">Visit Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tata.visit.tracker</field>
+            <field name="view_mode">tree,kanban,search</field>
+        <field name="context">{'group_by': ['status_time', 'user_id']}</field>
+
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <record id="tata_visit_tracker_report_pending_tree_act_window" model="ir.actions.act_window">
+            <field name="name">Visit Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tata.visit.tracker</field>
+            <field name="view_mode">tree,kanban,form,search</field>
+        <field name="context">{'group_by': ['status_time', 'user_id']}</field>
+            <field name="domain">[('status','in',['draft','checkin'])]</field>
+
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Visit Report" id="report_of_visits"  parent='crm.crm_menu_report' action="tata_visit_tracker_report_tree_act_window"/>
+        <menuitem name="My Pending Visits" id="pending_of_visits"  parent='crm.crm_menu_sales' sequence="1" action="tata_visit_tracker_report_pending_tree_act_window"/>
+
+    </data>
+</odoo>

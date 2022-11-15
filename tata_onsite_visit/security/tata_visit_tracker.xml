@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+   <record model="ir.rule" id="tata_visit_record_admin">
+        <field name="name">Visit Admin</field>
+        <field name="model_id" ref="model_tata_visit_tracker"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4, ref('custom_executive_crm_tata.group_tata_admin_all_leads'))]"/>
+
+    </record>
+
+   <record model="ir.rule" id="tata_visit_record_dealers">
+        <field name="name">Visit Dealers</field>
+        <field name="model_id" ref="model_tata_visit_tracker"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+               <field name="groups" eval="[(4, ref('custom_executive_crm_tata.group_tata_dealer_salesman'))]"/>
+
+    </record>
+
+     <record model="ir.rule" id="tata_visit_record_executive">
+        <field name="name">Visit Executive</field>
+        <field name="model_id" ref="model_tata_visit_tracker"/>
+         <field name="domain_force">[('user_id', '=', user.id)]</field>
+                 <field name="groups" eval="[(4, ref('custom_executive_crm_tata.group_tata_executive_all_leads'))]"/>
+
+    </record>
+
+    </data>
+</odoo>
